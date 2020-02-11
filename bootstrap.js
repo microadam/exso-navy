@@ -15,7 +15,7 @@ function bootstrap (serviceLocator, cb) {
     , webhookParser = createParser(webhookOptions)
     , handleWebhook = createWebhookHandler(serviceLocator)
 
-  gh.authenticate({ type: 'oauth', token: serviceLocator.secrets.githubToken })
+  gh.authenticate({ type: 'token', token: serviceLocator.secrets.githubToken })
   server.use(webhookParser)
 
   webhookParser.on('*', handleWebhook)
